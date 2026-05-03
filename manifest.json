@@ -1,0 +1,10 @@
+{
+  "name": "LeadsPlease® Solutions",
+  "short_name": "LP Solutions",
+  "description": "Industry, Use-Case, and Tech playbooks for LeadsPlease® data.",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#FF6633",
+  "background_color": "#ffffff",
+  "icons": [{"src":"https://www.leadsplease.com/affiliates/lp/images/look_feel/logo-lp-1777739221978-2993.png","sizes":"192x192","type":"image/png"}]
+}

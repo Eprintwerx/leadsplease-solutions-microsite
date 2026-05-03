@@ -1,0 +1,20 @@
+# LeadsPlease® Solutions
+
+> The LeadsPlease® Solutions hub — three pillars (Tech, Industries, Applied) covering every vertical and use-case where U.S. mailing-list, business-contact, and intent data drives ROI. Cross-links into the Sales-Garden (reseller program), MCP Server (AI tooling), and Data API (developer integration) sister microsites.
+
+## Pillars
+- Tech: Data API, MCP Server, DataWidget®, integrations
+- Industries: real estate, insurance + Medicare, mortgage refi, solar, legal/mass tort, B2B SaaS, automotive, healthcare
+- Applied: direct-mail campaigns, AI sales agents, intent-data targeting, list aggregation, T65 Medicare AEP, recurring lead feeds
+
+## Live pages
+- /industries/real-estate.html
+- /applied/direct-mail-campaigns.html
+
+## Sister microsites
+- https://sales-garden-microsite-production.up.railway.app/
+- https://leadsplease-mcp-microsite-production.up.railway.app/
+- https://leadsplease-data-api-microsite-production.up.railway.app/
+
+## Support
+- tech@leadsplease.com — (866) 306-8674

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://solutions.leadsplease.com/sitemap.xml

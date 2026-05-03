@@ -1,0 +1,8 @@
+{
+  "name": "leadsplease-solutions-microsite",
+  "version": "1.0.0",
+  "description": "LeadsPlease® Solutions hub — by Industry, by Use Case, by Tech. Topic-cluster microsite that cross-links into the Sales-Garden / MCP / Data API sister microsites for SEO leverage.",
+  "main": "server.js",
+  "scripts": { "start": "node server.js" },
+  "dependencies": { "express": "^4.21.2" }
+}
