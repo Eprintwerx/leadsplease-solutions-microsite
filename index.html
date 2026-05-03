@@ -181,6 +181,38 @@
 }
 </script>
 
+<!-- Service schema with AggregateRating — covers the Solutions hub as a B2B offering -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "LeadsPlease® Solutions library",
+  "serviceType": "Vertical and use-case playbooks for U.S. mailing-list, business-contact, and intent data",
+  "provider": { "@type": "Organization", "name": "LeadsPlease", "url": "https://www.leadsplease.com" },
+  "areaServed": { "@type": "Country", "name": "United States" },
+  "audience": { "@type": "BusinessAudience", "name": "Small-business marketers, mortgage brokers, insurance agents, real-estate agents, direct-mail platforms, B2B SaaS sales-ops, marketing agencies, multi-location franchisor marketing tools" },
+  "description": "Three-pillar topic hub — Tech / Industries / Applied — covering every vertical and use case where LeadsPlease® data drives ROI. Cross-links into the Sales-Garden (reseller program), MCP Server (AI tooling), Data API (developer integration), and DataWidget® for Web-to-Print (embeddable widget) sister microsites.",
+  "url": "https://solutions.leadsplease.com/",
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "53", "bestRating": "5", "worstRating": "1" }
+}
+</script>
+
+<!-- FAQPage — surfaces Solutions Q&As in Google rich results -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"What is the LeadsPlease® Solutions hub?","acceptedAnswer":{"@type":"Answer","text":"A topic-cluster microsite covering every industry and use case where LeadsPlease® data drives ROI. Three pillars — Tech (Data API, MCP Server, DataWidget®, integrations), Industries (real estate, insurance/Medicare, mortgage refi, solar, legal/mass tort, B2B SaaS, automotive, healthcare), and Applied (direct-mail playbooks, AI sales agents, intent targeting, list aggregation, T65/Medicare AEP, recurring lead feeds)."}},
+    {"@type":"Question","name":"Which industries are covered?","acceptedAnswer":{"@type":"Answer","text":"Eight verticals to start: real estate (live), insurance + Medicare AEP, mortgage refinance, solar, legal/mass tort, B2B SaaS prospecting, automotive dealerships, and healthcare. Each gets a dedicated playbook with the recommended LP product mix, sample API criteria, multi-touch cadence, and the response-rate math."}},
+    {"@type":"Question","name":"What's the difference between Solutions, the MCP Server, the Data API, and the DataWidget® for Web-to-Print?","acceptedAnswer":{"@type":"Answer","text":"Solutions is the editorial topic hub — playbooks for non-developer buyers and decision-makers. The MCP Server is the AI-agent surface (plug LeadsPlease® into Claude/Cursor/ChatGPT). The Data API is the REST/JSON developer integration. The DataWidget® for Web-to-Print is the embeddable patented three-panel UI for postcard / EDDM / direct-mail platforms. Solutions cross-links into all three; you pick the access path that matches how your team works."}},
+    {"@type":"Question","name":"Where does the data come from?","acceptedAnswer":{"@type":"Answer","text":"250M+ U.S. consumer records (210M households with 30+ demographics), 18M+ verified U.S. businesses (SIC + NAICS + employee count + sales volume + executive titles), plus weekly-refreshed New Homeowner and New Mover feeds and a daily-refreshed Intent Data overlay. All USPS CASS-certified for direct-mail deliverability."}},
+    {"@type":"Question","name":"How do I get started?","acceptedAnswer":{"@type":"Answer","text":"Pick the access path: developers go to developers.leadsplease.com (Data API) or mcp.leadsplease.com (MCP Server). Web-to-print platforms go to web-to-print.datawidget.com (embeddable widget). End-customers buying lists once-off go to leadsplease.com (the website checkout). Resellers wanting their own brand on the receipt go to leadsplease.com/marketing/sell-leadsplease-data."}},
+    {"@type":"Question","name":"Is my industry not listed?","acceptedAnswer":{"@type":"Answer","text":"We've shipped pages for the eight most common verticals to start. If your fit is more specialised — political, non-profit, education, hospitality, retail — email tech@leadsplease.com and we'll prioritise the playbook."}}
+  ]
+}
+</script>
+
 <!-- Google Tag Manager (mirrors leadsplease.com) -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TXZ6RL');</script>
 </head>
