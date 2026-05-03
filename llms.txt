@@ -14,7 +14,7 @@
 ## Sister microsites
 - https://sales-garden-microsite-production.up.railway.app/
 - https://leadsplease-mcp-microsite-production.up.railway.app/
-- https://leadsplease-data-api-microsite-production.up.railway.app/
+- https://lp-data-api-microsite-production.up.railway.app/
 
 ## Support
 - tech@leadsplease.com — (866) 306-8674
