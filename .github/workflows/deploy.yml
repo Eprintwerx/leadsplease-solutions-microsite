@@ -1,0 +1,56 @@
+# Deploys the static site to S3 + invalidates CloudFront by running the
+# existing scripts/deploy-s3.mjs (which is what `npm run deploy` calls).
+#
+# Required GitHub secrets (Settings → Secrets and variables → Actions → Secrets):
+#   AWS_ACCESS_KEY_ID
+#   AWS_SECRET_ACCESS_KEY
+#
+# Required GitHub variables (… → Variables):
+#   AWS_REGION                  e.g. us-east-1
+#   S3_BUCKET                   e.g. leadsplease-test-solutions-microsite
+#   CLOUDFRONT_DISTRIBUTION_ID  e.g. E39WJRUVOH25A4
+# Optional:
+#   S3_KEY_PREFIX               e.g. solutions-hub  (mount under a sub-path)
+
+name: Deploy to AWS
+
+on:
+  push:
+    branches: [test]
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run (no S3 writes, no invalidation)'
+        type: boolean
+        default: false
+
+jobs:
+  deploy:
+    name: S3 sync + CloudFront invalidation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install production dependencies
+        run: npm ci --omit=dev
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ vars.AWS_REGION }}
+
+      - name: Deploy
+        env:
+          S3_BUCKET: ${{ vars.S3_BUCKET }}
+          CLOUDFRONT_DISTRIBUTION_ID: ${{ vars.CLOUDFRONT_DISTRIBUTION_ID }}
+          S3_KEY_PREFIX: ${{ vars.S3_KEY_PREFIX }}
+          AWS_REGION: ${{ vars.AWS_REGION }}
+          DRY_RUN: ${{ inputs.dry_run && '1' || '' }}
+        run: npm run deploy
