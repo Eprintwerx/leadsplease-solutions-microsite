@@ -42,9 +42,9 @@ Write-Host "    Current ETag: $distConfigEtag"
 
 # Sanity check: bail if our origin or behavior is already there
 $existingOrigin = $distConfig.Origins.Items | Where-Object { $_.Id -eq $ORIGIN_ID }
-$existingBehavior = $distConfig.CacheBehaviors.Items | Where-Object { $_.PathPattern -eq "/solutions-hub*" }
+$existingBehavior = $distConfig.CacheBehaviors.Items | Where-Object { $_.PathPattern -eq "/solutions*" }
 if ($existingOrigin) { Write-Host "    Origin '$ORIGIN_ID' already present - skipping origin add" -ForegroundColor Yellow }
-if ($existingBehavior) { Write-Host "    Behavior '/solutions-hub*' already present - skipping behavior add" -ForegroundColor Yellow }
+if ($existingBehavior) { Write-Host "    Behavior '/solutions*' already present - skipping behavior add" -ForegroundColor Yellow }
 
 # ------------------------------------------------------------------
 # 3. Build new origin and new cache behavior
@@ -67,7 +67,7 @@ $newOrigin = [pscustomobject]@{
 $cachingOptimizedId = "658327ea-f89d-4fab-a63d-7e88639e58f6"
 
 $newBehavior = [pscustomobject]@{
-    PathPattern              = "/solutions-hub*"
+    PathPattern              = "/solutions*"
     TargetOriginId           = $ORIGIN_ID
     TrustedSigners           = @{ Enabled = $false; Quantity = 0 }
     TrustedKeyGroups         = @{ Enabled = $false; Quantity = 0 }
@@ -131,7 +131,7 @@ $policyPath = Join-Path $env:TEMP "bucket-policy.json"
     "Effect": "Allow",
     "Principal": { "Service": "cloudfront.amazonaws.com" },
     "Action": "s3:GetObject",
-    "Resource": "arn:aws:s3:::$BUCKET/solutions-hub/*",
+    "Resource": "arn:aws:s3:::$BUCKET/solutions/*",
     "Condition": { "StringEquals": { "AWS:SourceArn": "arn:aws:cloudfront::${ACCOUNT}:distribution/$DIST" } }
   }]
 }
@@ -145,11 +145,11 @@ Write-Host "    Bucket policy applied." -ForegroundColor Green
 # 6. Invalidate
 # ------------------------------------------------------------------
 Write-Host "==> Creating invalidation..." -ForegroundColor Cyan
-aws cloudfront create-invalidation --distribution-id $DIST --paths "/solutions-hub" "/solutions-hub/*" | Out-Null
+aws cloudfront create-invalidation --distribution-id $DIST --paths "/solutions" "/solutions/*" | Out-Null
 Write-Host "    Invalidation queued." -ForegroundColor Green
 
 Write-Host ""
 Write-Host "All wiring submitted. Wait 5-10 min for distribution to redeploy, then:" -ForegroundColor Green
-Write-Host "  curl -I https://test.leadsplease.com/solutions-hub/"
-Write-Host "  curl -I https://test.leadsplease.com/solutions-hub/industries/real-estate.html"
+Write-Host "  curl -I https://test.leadsplease.com/solutions/"
+Write-Host "  curl -I https://test.leadsplease.com/solutions/industries/real-estate.html"
 

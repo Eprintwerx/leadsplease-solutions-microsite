@@ -52,7 +52,7 @@ jobs:
         env:
           S3_BUCKET: ${{ vars.S3_BUCKET }}
           CLOUDFRONT_DISTRIBUTION_ID: ${{ vars.CLOUDFRONT_DISTRIBUTION_ID }}
-          S3_KEY_PREFIX: solutions-hub
+          S3_KEY_PREFIX: solutions
           AWS_REGION: ${{ vars.AWS_REGION }}
           DRY_RUN: ${{ inputs.dry_run && '1' || '' }}
         run: npm run deploy
