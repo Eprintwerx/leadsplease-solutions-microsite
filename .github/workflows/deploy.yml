@@ -1,14 +1,15 @@
 # Deploys the static site to S3 + invalidates CloudFront by running the
 # existing scripts/deploy-s3.mjs (which is what `npm run deploy` calls).
 #
-# Required GitHub secrets (Settings → Secrets and variables → Actions → Secrets):
-#   AWS_ACCESS_KEY_ID
-#   AWS_SECRET_ACCESS_KEY
-#
-# Required GitHub variables (… → Variables):
-#   AWS_REGION                  e.g. us-east-1
-#   S3_BUCKET                   e.g. leadsplease-test-solutions-microsite
-#   CLOUDFRONT_DISTRIBUTION_ID  e.g. E39WJRUVOH25A4
+# Required GitHub secrets and variables, scoped to the "live" environment
+# (Settings → Environments → live):
+#   Secrets:
+#     AWS_ACCESS_KEY_ID
+#     AWS_SECRET_ACCESS_KEY
+#   Variables:
+#     AWS_REGION                  e.g. us-east-1
+#     S3_BUCKET                   e.g. leadsplease-test-solutions-microsite
+#     CLOUDFRONT_DISTRIBUTION_ID  e.g. E39WJRUVOH25A4
 #
 # Site is published under the S3 key prefix `solutions-hub/` so it can be
 # mounted at /solutions-hub/* on a shared CloudFront distribution. The
@@ -18,7 +19,7 @@ name: Deploy to AWS
 
 on:
   push:
-    branches: [test]
+    branches: [live]
   workflow_dispatch:
     inputs:
       dry_run:
@@ -30,6 +31,7 @@ jobs:
   deploy:
     name: S3 sync + CloudFront invalidation
     runs-on: ubuntu-latest
+    environment: live
     steps:
       - uses: actions/checkout@v4
 

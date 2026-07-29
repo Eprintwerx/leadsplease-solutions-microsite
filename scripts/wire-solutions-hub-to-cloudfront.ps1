@@ -150,6 +150,6 @@ Write-Host "    Invalidation queued." -ForegroundColor Green
 
 Write-Host ""
 Write-Host "All wiring submitted. Wait 5-10 min for distribution to redeploy, then:" -ForegroundColor Green
-Write-Host "  curl -I https://test.leadsplease.com/solutions/"
-Write-Host "  curl -I https://test.leadsplease.com/solutions/industries/real-estate.html"
+Write-Host "  curl -I https://www.leadsplease.com/solutions/"
+Write-Host "  curl -I https://www.leadsplease.com/solutions/industries/real-estate.html"
 
